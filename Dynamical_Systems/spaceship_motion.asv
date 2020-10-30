@@ -1,0 +1,7 @@
+function sm = spaceship_motion(t,p_init)
+
+    vs = p_init(1,2);
+    as = spaceship_acceleration(xs,moon_position(t));
+    sm = [vs;as];
+
+end
