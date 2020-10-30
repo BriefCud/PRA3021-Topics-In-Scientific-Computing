@@ -1,0 +1,68 @@
+% function [a,b] = dft(x)
+% %function that computes the discrete fourier transform
+%     x = [1,4,5,3,4,5,7,6,4,32,1,12,4,15,50,56,5];
+%     N = numel(x);
+%     
+%     for k = 0:N
+%         s_a = 0;
+%         s_b = 0;
+%         for n=0:(N-1)
+%             s_a = s_a + x(n+1) * cos(2 * pi * k * n / N);
+%             s_b = s_b + x(n+1) * sin(2 * pi * k * n/N);
+%         end
+%     a(k+1) = s_a * 2/N;
+%     b(k+1)= s_b * 2/N;
+%     end
+%     
+%     %disp("a coef " + a)
+%     %disp("b coef " + b)
+%     
+%     %generates plot of the magnitude spectrum of x and shows
+%     % its frequency contents
+%     T = pi
+%     v_s = N/T
+%     A = sqrt(a.^2+b.^2);
+%     K = length(A)
+%     v = (0:K-1)/N * v_s;
+%     plot(v,A)
+%     xlabel('frequency'), ylabel('amplitude')
+% end
+
+function [] = diy_three()
+    %Do it yourself 3, computing the discrete fourier transform
+    
+    v_1 = 16;
+    v_2 = 50;
+    
+    f_1 = @(t_1)sin(10 * pi * t) * sin(16 * pi * t);
+    T_1 = 1;
+    N_1 = T_1 * v_1 ;
+    t_1 = (0:N_1 - 1)/N_1 * T_1; %sample times
+    
+    f_2 = @(t_2)sin(10 * pi * t) / (2 + sin(4 * pi * t));
+    T_2 = 1;
+    N_2 = T_2 * v_1;
+    t_2 = (0:N_2 - 1)/N_2 * T_2;
+    
+    f_3 = @(t_3)mod(t+1,2) - 1;
+    T_3 = 2;
+    N_3 = T_3 * v_1;
+    t_3 = (0:N_3 - 1)/N_3 * T_3;
+    
+    f_4 = @(t_4)floor(mod(t+1,2));
+    T_4 = 2;
+    N_4 = T_4 * v_1;
+    t_4 = (0:N_4 - 1)/N_1 * T_4;
+    
+    figure(1)
+    fplot(f_1,[0,T_1]); hold on; plot(t_1,f_1(t_1),'x');
+%     figure(2)
+%     fplot(f_2,[0,T_2]); hold on; plot(t_2,f_2(t_2),'x');
+%     figure(3)
+%     fplot(f_3,[0,T_3]); hold on; plot(t_3,f_3(t_3),'x');
+%     figure(4)
+%     fplot(f_4,[0,T_4]); hold on; plot(t_4,f_4(t_4),'x');
+        
+
+end
+
