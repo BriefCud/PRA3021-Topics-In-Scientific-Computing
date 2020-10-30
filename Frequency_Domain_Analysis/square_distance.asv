@@ -1,9 +1,0 @@
-function dist = square_distance(U,v)
-
-    N = size(U,1);
-    dist = NaN(1,N);
-    
-    for i = 1:N    
-        dist(i) = sum((v-U(i)).^2);       
-    end
-end
